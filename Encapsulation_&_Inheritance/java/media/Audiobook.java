@@ -3,7 +3,7 @@ package media;
 import media.parent.Media;
 
 public class Audiobook extends Media {
-    public Integer duration;
+    private Integer duration;
     public Audiobook(String name, String author, String genre, Integer duration) {
         super(name, author, genre);
         this.duration = duration;
