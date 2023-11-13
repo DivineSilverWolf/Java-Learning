@@ -12,13 +12,15 @@ public class ArmyHelicopters extends Army {
     public ArmyHelicopters(Integer countSolder, ConstructionRank constructionRank, String nameArmy) {
         super(countSolder, constructionRank, nameArmy);
     }
-     public static void takePosition(Set<Army> armySet, Army army) {
-        if(!sameClassCheck(armySet, (Class<Army>) army.getClass()))
+     public static <T> void takePosition(Set<T> armySet, T armyT) {
+        ArmyHelicopters army = (ArmyHelicopters) armyT;
+        if(!sameClassCheck(armySet, army.getClass()))
             return;
         Army minArmy = null;
         Army maxArmy = null;
         int coeffArmy = army.getCountSolder() * (army.getConstructionRank().ordinal() + 1);
-        for (Army army1 : armySet) {
+        for (T armyX : armySet) {
+            ArmyHelicopters army1 = (ArmyHelicopters) armyX;
             if(army1 == army)
                 break;
             int coeffArmy1 = army1.getCountSolder() * (army1.getConstructionRank().ordinal() + 1);
